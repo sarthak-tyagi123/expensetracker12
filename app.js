@@ -49,7 +49,7 @@ app.get("/food_insights", function(req, res) {
   let foodData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'food') {
+    if (txn.category=== 'food') {
       foodData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
@@ -69,7 +69,7 @@ app.get("/travel_insights", function(req, res) {
   let travelData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'travel') {
+    if (txn.category === 'travel') {
       travelData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
@@ -89,7 +89,7 @@ app.get("/study_insights", function(req, res) {
   let studyData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'study') {
+    if (txn.category === 'study') {
       studyData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
@@ -109,7 +109,7 @@ app.get("/shopping_insights", function(req, res) {
   let shoppingData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'shopping') {
+    if (txn.category=== 'shopping') {
       shoppingData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
@@ -130,7 +130,7 @@ app.get("/grocery_insights", function(req, res) {
   let groceryData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'grocery') {
+    if (txn.category=== 'grocery') {
       groceryData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
