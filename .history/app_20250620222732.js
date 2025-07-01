@@ -1,0 +1,15 @@
+let express=require("express");
+let app=express();
+
+
+app.get("/",function(req,res){
+    res.render("1.ejs");
+})
+
+
+app.post("/expenses",function(req,res){
+  const { name, amount } = req.body;
+  res.render('expenses', { name, amount })
+})
+
+app.listen(3000);

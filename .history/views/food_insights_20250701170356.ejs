@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food Insights</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .span_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40%;
+      width: 40%;
+      margin: 20px;
+    }
+
+    .span2 {
+      position: absolute;
+      top: 140px;
+      right: 170px;
+      padding: 10px 20px;
+      color: white;
+      max-height: 550px;
+      width: 350px;
+      background-color: transparent; 
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .heading {
+      position: sticky;
+      top: 0;
+      background-color: #121212; /* same as body bg so looks seamless */
+      padding: 10px 0;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 10;
+    
+    }
+
+    
+    .table-container {
+  overflow-y: auto;
+  max-height: 480px;
+  margin-top: 5px; /* thoda upar le gaya (pehle 10px tha) */
+  background-color: transparent;
+  padding-right: 5px;
+
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;  /* collapse se separate kiya */
+  border-spacing: 0 8px; /* row ke beech vertical gap 8px (aap adjust kar sakte hain) */
+  color: white;
+}
+tbody tr {
+  background-color: #1f1f1f; /* thoda dark bg to alag dikhe rows */
+  border-radius: 6px; /* thoda rounded corner for smoothness */
+}
+
+tbody tr:hover {
+  background-color: #2c2c2c;
+}
+tbody td {
+  padding: 12px 10px;
+  text-align: center;
+  /* border hata hua hai */
+  /* Rounded corners ke liye: */
+  /* thoda padding same rakha hai */
+}
+
+  </style>
+</head>
+<body>
+
+  <br /><br />
+  <span class="span_box">
+    <canvas id="myChart" width="400px" height="400px"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const labels = <%- JSON.stringify(data.map(e => e.description)) %>;
+      const amounts = <%- JSON.stringify(data.map(e => Number(e.amount))) %>;
+
+      function getRandomColor(opacity = 0.6) {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+      }
+
+      const backgroundColors = amounts.map(() => getRandomColor(0.6));
+      const borderColors = backgroundColors.map(bg => bg.replace(/[\d\.]+\)$/g, '1)'));
+
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Expenses',
+            data: amounts,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+  </span>
+
+  <span class="span2">
+    <h1 class="heading">Food Details</h1>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let item of data) { %>
+          <tr>
+            <td><%= item.description %></td>
+            <td><%= item.amount %></td>
+            <td><%= item.date %></td>
+            <td><%= item.time %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </span>
+
+</body>
+</html>

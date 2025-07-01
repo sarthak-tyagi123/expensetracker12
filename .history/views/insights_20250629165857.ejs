@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights View</title>
+</head>
+<body>
+    chart 
+    
+  
+  
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    
+
+
+    const labels = <%- JSON.stringify(data.map(e => e.category)) %>;
+    const data = <%- JSON.stringify(data.map(e => e.amount)) %>;
+
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:labels,
+      datasets: [{
+        label: 'expenses',
+        data: amount,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          min:0,
+          max:2000
+          
+        }
+      }
+    }
+  });
+
+
+</script>
+
+</body>
+</html>

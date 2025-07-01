@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Transaction Page</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #f0f0f0;
+    }
+
+  
+
+      table {
+    border-collapse: separate; /* Important: Allows spacing */
+    border-spacing: 10px; /* Space between rows and columns */
+    width: 100%;
+  }
+
+  th{
+    border: 3px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+
+   
+  }
+
+    td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+   
+  }
+
+ 
+
+  </style>
+</head>
+<body>
+
+<center><h1>Transaction List</h1></center>
+<a href=""></a>
+<br><br><br>
+ 
+<table border="1">
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Edit</th>
+    <th>Delete</th>
+
+  </tr>
+
+  <% data.forEach(function(item) { %>
+    <tr>
+      <td><%= item.date %></td>
+      <td><%= item.time %></td>
+      <td><%= item.category %></td>
+      <td><%= item.description %></td>
+       <td><%= item.amount %></td>
+        
+    </tr>
+  <% }); %>
+</table>
+
+   
+
+</body>
+</html>

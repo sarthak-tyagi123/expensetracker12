@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .logo {
+      height: 250px;
+      width: 250px;
+      display: block;
+      margin: 80px auto 30px auto;
+    }
+
+    .heading-container {
+      text-align: center;
+    }
+
+    .heading-container h1 {
+      margin: 10px;
+      font-size: 28px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .start-button {
+      display: block;
+      margin: 50px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .start-button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #a777e3, #6e8efb);
+    }
+
+    @media screen and (max-width: 768px) {
+      .logo {
+        height: 180px;
+        width: 180px;
+      }
+
+      .heading-container h1 {
+        font-size: 22px;
+      }
+
+      .start-button {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form action="/home">
+    <img src="/images/logo.png" alt="logo" class="logo" />
+    <video src="\images\5849608-hd_1920_1080_30fps.mp4" height=""></video>
+
+    <div class="heading-container">
+      <h1>Save Your Money</h1>
+      <h1>With Expense Tracker</h1>
+    </div>
+
+    <button type="submit" class="start-button">Start</button>
+  </form>
+
+</body>
+</html>

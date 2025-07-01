@@ -1,0 +1,181 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    
+    <form action="/expenses" method="post">
+
+    <label for="text">Expense Name</label>
+    <input type="text" name="name" required>
+    <label for="number">Amount </label>
+    <input type="number" name="amount" required>
+    <button>submit</button>
+    
+
+    </form>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Expenses</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.expense-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.expense-form input,
+.expense-form button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.expense-form input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.expense-form button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.expense-form button:hover {
+  background-color: #2980b9;
+}
+
+canvas {
+  width: 100% !important;
+  max-height: 300px;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+tfoot td {
+  font-weight: bold;
+  background-color: #f8f8f8;
+}
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Summary</h1>
+
+    <!-- Chart -->
+    <canvas id="myChart"></canvas>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Amount (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let total = 0; %>
+        <% expenses.forEach(e => { total += e.amount; %>
+          <tr>
+            <td><%= e.name %></td>
+            <td>₹<%= e.amount %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>₹<%= total %></strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script>
+    const labels = <%- JSON.stringify(expenses.map(e => e.name)) %>;
+    const data = <%- JSON.stringify(expenses.map(e => e.amount)) %>;
+
+    // Generate different colors for each bar
+    const backgroundColors = labels.map(() => `hsl(${Math.random() * 360}, 70%, 60%)`);
+
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Expenses',
+          data: data,
+          backgroundColor: backgroundColors,
+          borderRadius: 5
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

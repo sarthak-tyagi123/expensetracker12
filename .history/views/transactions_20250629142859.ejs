@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Transaction Page</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #f0f0f0;
+    }
+
+  </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="box">
+        <form class="form" action="/transactions" method="post">
+            <h1>Transaction Details</h1>
+            <label for="text">Transaction Name</label>
+            <input type="text" name="name" id="name" required>
+            
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" id="amount" required>
+            
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+    </div>
+    
+    <% if (data && data.length > 0) { %>
+        <h2>Transaction List</h2>
+        <ul>
+        <% data.forEach(function(transaction) { %>
+            <li><%= transaction.name %> - $<%= transaction.amount %> on <%= transaction.date %></li>
+        <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No transactions available.</p>
+    <% } %> 
+    
+
+
+</body>
+</html>

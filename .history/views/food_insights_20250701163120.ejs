@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Insights</title>
+    <style>
+
+    
+    body{
+
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+    }       
+
+
+       .span_box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40%;
+      width: 40%;
+      margin: 20px;
+     
+
+    }
+    </style>
+</head>
+<body>
+
+
+<span class="span_box">
+
+    
+<canvas id="myChart" width="400px" height="400px"></canvas>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const labels = <%- JSON.stringify(data.map(e => e.description)) %>;
+  const amounts = <%- JSON.stringify(data.map(e => Number(e.amount))) %>;
+   
+  function getRandomColor(opacity = 0.6) {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+
+  // Generate random background and border colors for each bar
+  const backgroundColors = amounts.map(() => getRandomColor(0.6));
+  const borderColors = backgroundColors.map(bg => bg.replace(/[\d\.]+\)$/g, '1)'));
+
+
+  const ctx = document.getElementById('myChart');
+
+
+  
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Expenses',
+        data: amounts,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+ </span>
+
+ 
+ <span>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  <% for(let item of data) { %>
+    <tr>
+      <td><%= item.description %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.date %></td>
+      <td><%= item.time %></td>
+    </tr>
+  <% } %>
+</table>
+
+</span>
+</body>
+</html>

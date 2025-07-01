@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights View</title>
+  <style>
+
+    body{
+
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+    }
+    .span_box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40%;
+      width: 40%;
+      margin: 20px;
+     
+
+    }
+
+
+.span2 {
+  position: absolute;
+  top:100px;
+  right:170px;
+  padding: 15px;
+  color: white;
+
+}
+
+table {
+  color: white;
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+th, td {
+  padding: 20px 26px;
+  text-align: center;
+  
+}
+
+   
+    
+  </style>
+ 
+</head>
+<body>
+
+<h1 style="color: white; margin: 15px;">Expenses by category</h1>
+
+
+  <span class="span_box">
+  <canvas id="myChart"></canvas>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = <%- JSON.stringify(Object.keys(data)) %>;
+const amounts = <%- JSON.stringify(Object.values(data)) %>;
+
+   
+  function getRandomColor(opacity = 0.6) {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+
+  // Generate random background and border colors for each bar
+  const backgroundColors = amounts.map(() => getRandomColor(0.6));
+  const borderColors = backgroundColors.map(bg => bg.replace(/[\d\.]+\)$/g, '1)'));
+
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Expenses',
+        data: amounts,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</span>
+<!-- totalling on the basis of the category -->
+ <span class="span2">
+  <h1 style="color: white;">Total sum of expenses </h1>
+
+  
+<table >
+
+  <tr>
+    <th><h3>Category</h3></th>
+    <th><h3>Total Expenses</h3></th>
+    <th><h3>Insights</h3></th>
+  </tr>
+
+<!-- printing the value of food category -->
+
+<% for(let cat in data) { %>
+  <% if(cat === 'food') { %>
+    <tr>
+      <td>Food</td>
+      <td><%= data[cat] %></td>
+      <td><a href="/food_insights" style="text-decoration:none;">check</a></td>
+    </tr>
+  <% } %>
+<% } %>
+
+
+<!-- printing the value of travel category -->
+
+  <% for(let cat in data) { %>
+  <% if(cat === 'travel') { %>
+    <tr>
+      <td> Travel</td>
+      <td><%= data[cat] %></td>
+      <td><a href="/food_insights" style="text-decoration:none;">check</a></td>
+    </tr>
+  <% } %>
+<% } %>
+
+<% for(let cat in data) { %>
+  <% if(cat === 'study') { %>
+    <tr>
+      <td>Study</td>
+      <td><%= data[cat] %></td>
+      <td><a href="/food_insights" style="text-decoration:none;">check</a></td>
+    </tr>
+  <% } %>
+<% } %>
+
+<% for(let cat in data) { %>
+  <% if(cat === 'shopping') { %>
+    <tr>
+      <td>Shopping</td>
+      <td><%= data[cat] %></td>
+      <td><a href="/food_insights" style="text-decoration:none;">check</a></td>
+    </tr>
+  <% } %>
+<% } %>
+
+
+<% for(let cat in data) { %>
+  <% if(cat === 'grocery') { %>
+    <tr>
+      <td>Grocery</td>
+      <td><%= data[cat] %></td>
+      <td><a href="/food_insights" style="text-decoration:none;">check</a></td>
+    </tr>
+  <% } %>
+<% } %>
+
+
+</table>
+  
+
+ </span>
+ 
+
+
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #f0f0f0;
+    }
+
+    
+    .nav{
+      display: flex;
+      height: 60px;
+      border: 2px solid black;
+      justify-content:space-around;
+      align-items: center;
+    }
+    
+    .a{
+      text-decoration: none;
+      font-size: larger;
+      font-weight: bolder;
+    }
+
+
+/* expense details  css */
+
+
+
+
+
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #66fcf1;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background-color: #2c2c2c;
+      color: #fff;
+    }
+
+    select{
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background-color: #2c2c2c;
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #00b4db, #0083b0);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    
+  </style>
+  
+</head>
+<body>
+
+  <div class="nav">
+    <a href="/" class="a">Home</a>
+    <a href="/transaction "class="a">Transactions</a>
+  </div>
+
+  <div class="container">
+    <div class="box">
+
+      <form class="form" action="/transactions" method="post">
+        <h1>Expenses Details</h1>
+
+        
+        
+        <label for="date">Date</label>
+        <input type="date" name="date">
+
+         <label for="number">Amount</label>
+        <input type="number" name="amount"  />
+
+        <label for="text">Category</label>
+        <select name="">
+          <option value="food" name="food">food</option>
+          <option value="travel">travel</option>
+          <option value="study">study</option>
+          <option value="shoping">shopping</option>
+          <option value="shoping">grocery</option>
+
+        </select>
+
+        <label for="text">Description</label>
+        <input type="text" name="description">
+       
+
+        <button type="submit">Add expense</button>
+      </form>
+    </div>
+  </div>
+
+
+  
+
+
+</body>
+</html>

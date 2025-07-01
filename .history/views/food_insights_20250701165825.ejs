@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food Insights</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .span_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40%;
+      width: 40%;
+      margin: 20px;
+    }
+
+    .span2 {
+      position: absolute;
+      top: 140px;
+      right: 170px;
+      padding: 20px 10px;
+      color: white;
+      max-height: 550px;
+      width: 350px;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+
+      /* Scroll container for the table data */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .heading {
+      position: sticky;
+      top: 0;
+      background-color: #1e1e1e;
+      padding: 10px 0;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 10;
+      border-bottom: 2px solid #333;
+    }
+
+    /* Container that scrolls below heading */
+    .table-container {
+      overflow-y: auto;
+      max-height: 480px; /* 550 (parent max-height) - heading height approx */
+      margin-top: 10px;
+      border-radius: 4px;
+      background-color: #2a2a2a;
+      padding-right: 10px; /* for scrollbar space */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: white;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #292929;
+      padding: 10px 15px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #444;
+      z-index: 9;
+    }
+
+    tbody td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    tbody tr:hover {
+      background-color: #444;
+    }
+
+    /* Scrollbar styling for WebKit browsers */
+    .table-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+      background-color: #555;
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <br /><br />
+  <span class="span_box">
+    <canvas id="myChart" width="400px" height="400px"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const labels = <%- JSON.stringify(data.map(e => e.description)) %>;
+      const amounts = <%- JSON.stringify(data.map(e => Number(e.amount))) %>;
+
+      function getRandomColor(opacity = 0.6) {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+      }
+
+      const backgroundColors = amounts.map(() => getRandomColor(0.6));
+      const borderColors = backgroundColors.map(bg => bg.replace(/[\d\.]+\)$/g, '1)'));
+
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Expenses',
+            data: amounts,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+  </span>
+
+  <span class="span2">
+    <h1 class="heading">Food Details</h1>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let item of data) { %>
+          <tr>
+            <td><%= item.description %></td>
+            <td><%= item.amount %></td>
+            <td><%= item.date %></td>
+            <td><%= item.time %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </span>
+
+</body>
+</html>

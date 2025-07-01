@@ -1,0 +1,46 @@
+<script>
+  const labels = <%- JSON.stringify(data.map(e => e.description)) %>;
+  const amounts = <%- JSON.stringify(data.map(e => Number(e.amount))) %>;
+
+  const colors = [
+    'rgba(255, 99, 132, 0.6)',
+    'rgba(54, 162, 235, 0.6)',
+    'rgba(255, 206, 86, 0.6)',
+    'rgba(75, 192, 192, 0.6)',
+    'rgba(153, 102, 255, 0.6)',
+    'rgba(255, 159, 64, 0.6)',
+    'rgba(199, 199, 199, 0.6)'
+  ];
+
+  // Repeat or slice colors to match data length
+  const backgroundColors = labels.map((_, i) => colors[i % colors.length]);
+
+  const borderColors = backgroundColors.map(color => {
+    // Make alpha 1.0 for border
+    return color.replace(/[\d\.]+\)$/g, '1)');
+  });
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Expenses',
+        data: amounts,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>

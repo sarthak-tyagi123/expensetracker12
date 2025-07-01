@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      font-family: 'Segoe UI', sans-serif;
+      color: #f0f0f0;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav .a {
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    .nav .a:hover {
+      color: #66fcf1;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #f2f2f2;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Form Container */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #eee;
+    }
+
+    input, select {
+  width: 100%;
+  padding: 14px 12px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: 0.3s ease;
+  height: 48px;           /* Force equal height */
+  line-height: 20px;      /* Optional: tweak this to align text vertically */
+  box-sizing: border-box; /* Ensures padding doesn't add to total height */
+}
+
+
+   
+    input:focus, select:focus {
+      border-color: #66fcf1;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #00b4db, #0083b0);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer or Extra Info */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #ddd;
+      opacity: 0.8;
+    }
+    
+@media (max-width: 600px) {
+  
+
+  form {
+    padding: 25px 20px;
+    max-width: 90%; /* Ensure form doesn't exceed screen width */
+    margin: auto;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  input, select, button {
+    font-size: 15px;
+    padding: 12px 10px;
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="nav">
+    <a href="/" class="a">🏠 Home</a>
+    <a href="/transaction" class="a">📊 Transactions</a>
+  </div>
+<div class="bird"></div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Track Your Expenses, Master Your Money 💸</h2>
+    <p>Welcome to your personal expense tracker. Record your daily spendings, keep an eye on your budget, and build better financial habits — all in one place.</p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="container">
+    <form action="/transactions" method="post">
+      <h1>Add New Expense</h1>
+
+      <label for="date">Date</label>
+      <input type="date" name="date" >
+
+      <label for="time">Time</label>
+      <input type="time" name="time" >
+
+      <label for="category" >Category</label>
+      <select name="category" >
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="study">Study</option>
+        <option value="shopping">Shopping</option>
+        <option value="grocery">Grocery</option>
+      </select>
+
+      <label for="description">Description</label>
+      <input type="text" name="description" maxlength="50" placeholder="e.g., Dinner with friends" >
+
+      <label for="amount">Amount</label>
+      <input type="number" name="amount" min="1" placeholder="e.g., 1500" >
+
+      <button type="submit">➕ Add Expense</button>
+    </form>
+  </div>
+
+  <!-- Optional Footer -->
+  <div class="footer">
+    © 2025 Expense Tracker. Crafted with ❤️ for better budgeting.
+  </div>
+
+</body>
+</html>

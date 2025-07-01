@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Transaction Page</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #f0f0f0;
+    }
+
+  </style>
+</head>
+<body>
+
+ <h1>Transaction List</h1>
+<style>
+  .table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* space between rows */
+  }
+
+  .row {
+    display: flex;
+    gap: 15px; /* space between columns */
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+
+  .row.header {
+    font-weight: bold;
+    background-color: #ddd;
+  }
+
+  .cell {
+    flex: 1; /* Equal width columns */
+  }
+</style>
+
+<div class="table">
+  <div class="row header">
+    <div class="cell">Date</div>
+    <div class="cell">Time</div>
+    <div class="cell">Category</div>
+    <div class="cell">Description</div>
+    <div class="cell">Amount</div>
+  </div>
+  <div class="row">
+    <div class="cell">2025-06-29</div>
+    <div class="cell">10:30 AM</div>
+    <div class="cell">Food</div>
+    <div class="cell">Lunch</div>
+    <div class="cell">$15</div>
+  </div>
+  <div class="row">
+    <div class="cell">2025-06-28</div>
+    <div class="cell">9:00 AM</div>
+    <div class="cell">Transport</div>
+    <div class="cell">Bus Ticket</div>
+    <div class="cell">$2</div>
+  </div>
+</div>
+
+   
+
+</body>
+</html>

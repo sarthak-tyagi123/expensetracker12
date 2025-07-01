@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5); /* Diagonal gradient */
+      
+    }
+
+   
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 0 10px;
+    }
+
+    .nav {
+      display: flex;
+      background-color: antiquewhite;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px); /* adjust for nav height */
+      padding: 40px;
+    }
+
+    .box {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #66fcf1;
+      font-size: 1.8rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 12px 0 6px;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background-color:none;
+      color: #fff;
+    }
+
+  
+    
+    
+
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+      }
+    
+
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="/home" class="a1">Home</a> 
+    <a href="/transactions" class="a2">Transactions</a>     
+  </div>
+
+  <div class="container">
+    <div class="box">
+      <form class="form" action="/transactions" method="post">
+        <h1>Expenses Details</h1>
+
+        <label for="name">Expense Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g., Groceries" required />
+
+        <label for="amount">Expense Amount</label>
+        <input type="number" id="amount" name="amount" placeholder="e.g., 1500" required />
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
