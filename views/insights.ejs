@@ -68,12 +68,8 @@ th, td {
     word-wrap: break-word;
     display: block;
     overflow-x: auto;
-    
   }
 
-  
-
-  
 
   h1 {
     font-size: 22px;
@@ -104,11 +100,12 @@ const amounts = <%- JSON.stringify(Object.values(data)) %>;
 
    
   function getRandomColor(opacity = 0.6) {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-  }
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}
+
 
   // Generate random background and border colors for each bar
   const backgroundColors = amounts.map(() => getRandomColor(0.6));
@@ -228,3 +225,4 @@ const amounts = <%- JSON.stringify(Object.values(data)) %>;
 
 </body>
 </html>
+
