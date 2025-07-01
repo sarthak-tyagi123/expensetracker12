@@ -56,11 +56,13 @@ th, td {
     margin: 10px auto;
   }
 
-  .span2 {
-    position: static;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px;
+  .span2 table {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 14px;
   }
 
   table {
@@ -68,12 +70,11 @@ th, td {
     word-wrap: break-word;
     display: block;
     overflow-x: auto;
-    
   }
 
-  
-
-  
+  th, td {
+    padding: 10px 12px;
+  }
 
   h1 {
     font-size: 22px;

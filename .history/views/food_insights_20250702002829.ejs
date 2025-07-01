@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Insights</title>
+    <title>Food Insights</title>
     <style>
 
     
@@ -74,7 +74,6 @@ thead th {
 }
 
 
-
 @media screen and (max-width: 600px) {
   /* Make body padding so content doesn’t touch edges */
   body {
@@ -83,13 +82,13 @@ thead th {
 
   /* Span_box becomes block, full width, auto height */
   .span_box {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 auto 20px auto !important;
-    position: static !important;  /* Remove absolute or relative */
-    top: auto !important;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  height: auto;
+}
 
   /* Make canvas responsive inside span_box */
   canvas#myChart {
@@ -198,7 +197,7 @@ thead th {
 
 
 <span class="span2">
-  <h1 class="heading" >Shopping Details</h1>
+  <h1 class="heading" >Food Details</h1>
 
   <div class="table-container">
     <table>

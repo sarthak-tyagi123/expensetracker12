@@ -50,37 +50,28 @@ th, td {
      
 
   @media screen and (max-width: 768px) {
-  .span_box {
-    width: 90%;
-    height: auto;
-    margin: 10px auto;
+    table {
+    width: 100%;
+    font-size: 14px;
+    border-collapse: collapse;
+    table-layout: fixed;       /* Ensures equal spacing across columns */
+    margin: 0 auto;            /* Centers the table horizontally */
+  }
+
+  th, td {
+    padding: 12px 10px;        /* Balanced padding */
+    text-align: center;
+    word-wrap: break-word;     /* Wrap long text if needed */
   }
 
   .span2 {
-    position: static;
-    width: 90%;
+    position: static !important;
+    width: 100% !important;
+    max-height: none !important;
     margin: 0 auto;
-    padding: 10px;
+    padding: 10px !important;
+    overflow: visible !important;
   }
-
-  table {
-    font-size: 14px;
-    word-wrap: break-word;
-    display: block;
-    overflow-x: auto;
-    
-  }
-
-  
-
-  
-
-  h1 {
-    font-size: 22px;
-    text-align: center;
-  }
-}
-
 
  
 

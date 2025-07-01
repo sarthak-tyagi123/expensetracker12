@@ -90,7 +90,7 @@ app.get("/study_insights", function(req, res) {
 
   for (let txn of transaction_data) {
     if (txn.category.toLowerCase() === 'study') {
-      studyData.push({
+      travelData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
         date: txn.date,

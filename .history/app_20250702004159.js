@@ -89,8 +89,8 @@ app.get("/study_insights", function(req, res) {
   let studyData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'study') {
-      studyData.push({
+    if (txn.category.toLowerCase() === 'travel') {
+      travelData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
         date: txn.date,
@@ -99,7 +99,7 @@ app.get("/study_insights", function(req, res) {
     }
   }
 
-  res.render("study_insights.ejs", { data: studyData });
+  res.render("travel_insights.ejs", { data: travelData });
 });
 
 

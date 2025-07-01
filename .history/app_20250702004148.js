@@ -85,12 +85,12 @@ app.get("/travel_insights", function(req, res) {
 
 // to get the data from transaction page to study_insights
 
-app.get("/study_insights", function(req, res) {
-  let studyData = [];
+app.get("/travel_insights", function(req, res) {
+  let travelData = [];
 
   for (let txn of transaction_data) {
-    if (txn.category.toLowerCase() === 'study') {
-      studyData.push({
+    if (txn.category.toLowerCase() === 'travel') {
+      travelData.push({
         description: txn.description,
         amount: parseFloat(txn.amount),
         date: txn.date,
@@ -99,7 +99,7 @@ app.get("/study_insights", function(req, res) {
     }
   }
 
-  res.render("study_insights.ejs", { data: studyData });
+  res.render("travel_insights.ejs", { data: travelData });
 });
 
 
